@@ -53,26 +53,26 @@ NB: *External IV chaining* does not allow to create hard links (man encfs)
 
 # Installation
 1. Install *libpam-dev* (depends on your distro)
-    ..* Debian: sudo apt-get install libpam-dev
-    ..* Arch: 
+ - Debian: sudo apt-get install libpam-dev 
+ - Arch: 
 2. Install *encfs*
 3. Edit `/etc/fuse.conf` and uncomment the line with `user_allow_other`
 4. Go in project root and do: `make build`
-5. `sudo cp build/pam_encfs.so $PAM_DIR` with $PAM_DIR depending on your distro.
-    ..* Debian: PAM_DIR=/lib/x86_64-linux-gnu/security/ or /lib/i386-linux-gnu/security/pam_unix.so
-    ..* Arch: /lib/security
-    ..* Others: find same dir as pam_unix.so ( `find / -name pam_unix.so` )
-6. Edit `/etc/pam.d/$LOGIN` and append a new line with `session optional pam_encfs.so`
-    ..* Debian: LOGIN_SESSION=/etc/pam.d/common-session
-    ..* Arch: LOGIN_SESSION=/etc/pam.d/...
+5. `sudo cp build/pam_encfs.so $PAM_DIR` with $PAM_DIR depending on your distro. 
+ - Debian: PAM_DIR=/lib/x86_64-linux-gnu/security/ or /lib/i386-linux-gnu/security/pam_unix.so 
+ - Arch: /lib/security 
+ - Others: find same dir as pam_unix.so and copy it there ( `find / -name pam_unix.so` )
+6. Edit `/etc/pam.d/$LOGIN` and append a new line with `session optional pam_encfs.so` 
+ - Debian: LOGIN_SESSION=/etc/pam.d/common-session 
+ - Arch: LOGIN_SESSION=/etc/pam.d/...
 7. It should work
 
 
 # Notes
-- It seems not to work with graphical login (Gnome 3 tested)
-- Not working with ssh-login, here is a quick workaround:
-    ..* login via ssh
-    ..* `su` to the user you want
+- It seems not to work with graphical login (Gnome 3 tested) 
+- Not working with ssh-login, here is a quick workaround: 
+  - login via ssh
+  - `su` to the user you want
 
 # Successfully tested on
 - Distributor ID: Debian Description: Debian GNU/Linux 7.8 (wheezy) Release: 7.8 Codename: wheezy
