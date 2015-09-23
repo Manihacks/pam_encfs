@@ -60,11 +60,11 @@ NB: *External IV chaining* does not allow to create hard links (man encfs)
 4. Go in project root and do: `make build`
 5. `sudo cp build/pam_encfs.so $PAM_DIR` with $PAM_DIR depending on your distro. 
  - Debian: PAM_DIR=/lib/x86_64-linux-gnu/security/ or /lib/i386-linux-gnu/security/pam_unix.so 
- - Arch: /lib/security 
+ - Arch: /lib/security/
  - Others: find same dir as pam_unix.so and copy it there ( `find / -name pam_unix.so` )
 6. Edit `/etc/pam.d/$LOGIN` and append a new line with `session optional pam_encfs.so` 
  - Debian: LOGIN_SESSION=/etc/pam.d/common-session 
- - Arch: LOGIN_SESSION=/etc/pam.d/...
+ - Arch: LOGIN_SESSION=/etc/pam.d/system-login
 7. It should work
 
 
@@ -79,3 +79,4 @@ NB: *External IV chaining* does not allow to create hard links (man encfs)
     Linux version 3.2.0-4-486 (debian-kernel@lists.debian.org) (gcc version 4.6.3 (Debian 4.6.3-14) ) #1 Debian 3.2.68-1+deb7u3
 - Distributor ID: Debian Description: Debian GNU/Linux 7.8 (wheezy) Release: 7.8 Codename: wheezy
 Linux version 3.2.0-4-amd64 (debian-kernel@lists.debian.org) (gcc version 4.6.3 (Debian 4.6.3-14) ) #1 SMP Debian 3.2.68-1+deb7u3
+- Archlinux (Kernel Version Coming)
